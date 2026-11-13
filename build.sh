@@ -16,3 +16,4 @@ lilypond -s -o vol2/pdf/vol2-modern-jazz-etudes vol2/src/vol2-modern-jazz-etudes
 rm -f vol2/pdf/*.midi
 python3 tools/vol2_combine.py
 python3 tools/make_index.py
+python3 tools/make_social_card.py
