@@ -1,0 +1,5 @@
+*.midi
+*.mid
+__pycache__/
+*.pyc
+*~

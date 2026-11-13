@@ -1,0 +1,16 @@
+\version "2.24.4"
+
+\paper {
+  #(set-paper-size "letter")
+  top-margin = 12\mm bottom-margin = 12\mm left-margin = 14\mm right-margin = 14\mm
+  ragged-last-bottom = ##t
+  markup-system-spacing.basic-distance = #8
+  system-system-spacing.basic-distance = #13
+}
+\book { \header { title = "Full-Range Runs: Chromatic, Diminished, Whole Tone" composer = "Original exercise — CC0" tagline = ##f copyright = "E♭ alto sax (written pitch). Original material by the pack authors, CC0 1.0 public domain dedication." } \markup \small \italic \wordwrap-string #"Symmetric scales low B♭ to high F♯ and back." \markup \vspace #0.6 
+\score { \new Staff { \time 4/4 \tempo "Full-range runs" 4 = 132-184 \omit Score.BarNumber \accidentalStyle neo-modern ais16^\markup{\bold "Chromatic, full range (sharps up / flats down)"}  b16 c'16 cis'16 d'16 dis'16 e'16 f'16 fis'16 g'16 gis'16 a'16 ais'16 b'16 c''16 cis''16 d''16 dis''16 e''16 f''16 fis''16 g''16 gis''16 a''16 ais''16 b''16 c'''16 cis'''16 d'''16 dis'''16 e'''16 f'''16 fis'''16 f'''16 e'''16 ees'''16 d'''16 des'''16 c'''16 b''16 bes''16 a''16 aes''16 g''16 ges''16 f''16 e''16 ees''16 d''16 des''16 c''16 b'16 bes'16 a'16 aes'16 g'16 ges'16 f'16 e'16 ees'16 d'16 des'16 c'16 b16 bes1 \bar "||" \break
+\tuplet 6/4 { ais16^\markup{\bold "Chromatic sextuplets"} b16 c'16 cis'16 d'16 dis'16 } \tuplet 6/4 { e'16 f'16 fis'16 g'16 gis'16 a'16 } \tuplet 6/4 { ais'16 b'16 c''16 cis''16 d''16 dis''16 } \tuplet 6/4 { e''16 f''16 fis''16 g''16 gis''16 a''16 } \tuplet 6/4 { ais''16 b''16 c'''16 cis'''16 d'''16 dis'''16 } \tuplet 6/4 { e'''16 f'''16 fis'''16 f'''16 e'''16 ees'''16 } \tuplet 6/4 { d'''16 des'''16 c'''16 b''16 bes''16 a''16 } \tuplet 6/4 { aes''16 g''16 ges''16 f''16 e''16 ees''16 } \tuplet 6/4 { d''16 des''16 c''16 b'16 bes'16 a'16 } \tuplet 6/4 { aes'16 g'16 ges'16 f'16 e'16 ees'16 } r4 r4 \bar "||" \break
+bes16^\markup{\bold "Diminished (H–W) on low B♭"}  b16 des'16 d'16 e'16 f'16 g'16 aes'16 bes'16 b'16 des''16 d''16 e''16 f''16 g''16 aes''16 bes''16 b''16 des'''16 d'''16 e'''16 f'''16 e'''16 d'''16 des'''16 b''16 bes''16 aes''16 g''16 f''16 e''16 d''16 des''16 b'16 bes'16 aes'16 g'16 f'16 e'16 d'16 des'16 b16 bes4. \bar "||" \break
+bes16^\markup{\bold "Diminished (W–H) on low B"}  b16 des'16 d'16 e'16 f'16 g'16 aes'16 bes'16 b'16 des''16 d''16 e''16 f''16 g''16 aes''16 bes''16 b''16 des'''16 d'''16 e'''16 f'''16 e'''16 d'''16 des'''16 b''16 bes''16 aes''16 g''16 f''16 e''16 d''16 des''16 b'16 bes'16 aes'16 g'16 f'16 e'16 d'16 des'16 b16 bes4. \bar "||" \break
+bes16^\markup{\bold "Whole tone on low B♭"}  c'16 d'16 e'16 ges'16 aes'16 bes'16 c''16 d''16 e''16 ges''16 aes''16 bes''16 c'''16 d'''16 e'''16 ges'''16 e'''16 d'''16 c'''16 bes''16 aes''16 ges''16 e''16 d''16 c''16 bes'16 aes'16 ges'16 e'16 d'16 c'16 bes1 \bar "||" \break
+b16^\markup{\bold "Whole tone on low B"}  des'16 ees'16 f'16 g'16 a'16 b'16 des''16 ees''16 f''16 g''16 a''16 b''16 des'''16 ees'''16 f'''16 ees'''16 des'''16 b''16 a''16 g''16 f''16 ees''16 des''16 b'16 a'16 g'16 f'16 ees'16 des'16 b8 \bar "||" \break \bar "|." } \layout { indent = 0 } } }

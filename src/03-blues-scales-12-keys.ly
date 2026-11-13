@@ -1,0 +1,34 @@
+\version "2.24.4"
+
+\paper {
+  #(set-paper-size "letter")
+  top-margin = 12\mm bottom-margin = 12\mm left-margin = 14\mm right-margin = 14\mm
+  ragged-last-bottom = ##t
+  markup-system-spacing.basic-distance = #8
+  system-system-spacing.basic-distance = #13
+}
+\book { \header { title = "Blues Scale Sheets — All 12 Keys" composer = "Original exercise — CC0" tagline = ##f copyright = "E♭ alto sax (written pitch). Original material by the pack authors, CC0 1.0 public domain dedication." } \markup \small \italic \wordwrap-string #"Full-range blues scale (1 ♭3 4 ♭5 5 ♭7) + descending triplet cascade. Swing or straight." \markup \vspace #0.6 
+\score { \new Staff { \omit Score.BarNumber \time 4/4 \tempo "Blues scales" 4 = 160-240 \key c \major bes16^\markup{\bold "C blues"}  c'16 ees'16 f'16 ges'16 g'16 bes'16 c''16 ees''16 f''16 ges''16 g''16 bes''16 c'''16 ees'''16 f'''16 ges'''16 f'''16 ees'''16 c'''16 bes''16 g''16 ges''16 f''16 ees''16 c''16 bes'16 g'16 ges'16 f'16 ees'16 c'16 bes1 \bar "||" \break
+\tuplet 3/2 { ges'''8 f'''8 c'''8 } \tuplet 3/2 { ees'''8 c'''8 g''8 } \tuplet 3/2 { bes''8 g''8 f''8 } \tuplet 3/2 { ges''8 f''8 c''8 } \tuplet 3/2 { ees''8 c''8 g'8 } \tuplet 3/2 { bes'8 g'8 f'8 } r4 r4 \bar "||" \break
+\key c \major bes16^\markup{\bold "F blues"}  ces'16 c'16 ees'16 f'16 aes'16 bes'16 ces''16 c''16 ees''16 f''16 aes''16 bes''16 ces'''16 c'''16 ees'''16 f'''16 ees'''16 c'''16 ces'''16 bes''16 aes''16 f''16 ees''16 c''16 ces''16 bes'16 aes'16 f'16 ees'16 c'16 ces'16 bes1 \bar "||" \break
+\tuplet 3/2 { f'''8 ees'''8 ces'''8 } \tuplet 3/2 { c'''8 ces'''8 aes''8 } \tuplet 3/2 { bes''8 aes''8 ees''8 } \tuplet 3/2 { f''8 ees''8 ces''8 } \tuplet 3/2 { c''8 ces''8 aes'8 } \tuplet 3/2 { bes'8 aes'8 ees'8 } r4 r4 \bar "||" \break
+\key c \major bes16^\markup{\bold "B♭ blues"}  des'16 ees'16 fes'16 f'16 aes'16 bes'16 des''16 ees''16 fes''16 f''16 aes''16 bes''16 des'''16 ees'''16 fes'''16 f'''16 fes'''16 ees'''16 des'''16 bes''16 aes''16 f''16 fes''16 ees''16 des''16 bes'16 aes'16 f'16 fes'16 ees'16 des'16 bes1 \bar "||" \break
+\tuplet 3/2 { f'''8 fes'''8 des'''8 } \tuplet 3/2 { ees'''8 des'''8 aes''8 } \tuplet 3/2 { bes''8 aes''8 fes''8 } \tuplet 3/2 { f''8 fes''8 des''8 } \tuplet 3/2 { ees''8 des''8 aes'8 } \tuplet 3/2 { bes'8 aes'8 fes'8 } r4 r4 \bar "||" \break
+\key c \major bes16^\markup{\bold "E♭ blues"}  des'16 ees'16 ges'16 aes'16 beses'16 bes'16 des''16 ees''16 ges''16 aes''16 beses''16 bes''16 des'''16 ees'''16 ges'''16 ees'''16 des'''16 bes''16 beses''16 aes''16 ges''16 ees''16 des''16 bes'16 beses'16 aes'16 ges'16 ees'16 des'16 bes8 \bar "||" \break
+\tuplet 3/2 { ges'''8 ees'''8 bes''8 } \tuplet 3/2 { des'''8 bes''8 aes''8 } \tuplet 3/2 { beses''8 aes''8 ees''8 } \tuplet 3/2 { ges''8 ees''8 bes'8 } \tuplet 3/2 { des''8 bes'8 aes'8 } \tuplet 3/2 { beses'8 aes'8 ees'8 } r4 r4 \bar "||" \break
+\key c \major ces'16^\markup{\bold "A♭ blues"}  des'16 eeses'16 ees'16 ges'16 aes'16 ces''16 des''16 eeses''16 ees''16 ges''16 aes''16 ces'''16 des'''16 eeses'''16 ees'''16 ges'''16 ees'''16 eeses'''16 des'''16 ces'''16 aes''16 ges''16 ees''16 eeses''16 des''16 ces''16 aes'16 ges'16 ees'16 eeses'16 des'16 ces'1 \bar "||" \break
+\tuplet 3/2 { ges'''8 ees'''8 des'''8 } \tuplet 3/2 { eeses'''8 des'''8 aes''8 } \tuplet 3/2 { ces'''8 aes''8 ees''8 } \tuplet 3/2 { ges''8 ees''8 des''8 } \tuplet 3/2 { eeses''8 des''8 aes'8 } \tuplet 3/2 { ces''8 aes'8 ees'8 } r4 r4 \bar "||" \break
+\key c \major ces'16^\markup{\bold "D♭ blues"}  des'16 fes'16 ges'16 aeses'16 aes'16 ces''16 des''16 fes''16 ges''16 aeses''16 aes''16 ces'''16 des'''16 fes'''16 ges'''16 fes'''16 des'''16 ces'''16 aes''16 aeses''16 ges''16 fes''16 des''16 ces''16 aes'16 aeses'16 ges'16 fes'16 des'16 ces'8 \bar "||" \break
+\tuplet 3/2 { ges'''8 fes'''8 ces'''8 } \tuplet 3/2 { des'''8 ces'''8 aeses''8 } \tuplet 3/2 { aes''8 aeses''8 fes''8 } \tuplet 3/2 { ges''8 fes''8 ces''8 } \tuplet 3/2 { des''8 ces''8 aeses'8 } \tuplet 3/2 { aes'8 aeses'8 fes'8 } r4 r4 \bar "||" \break
+\key c \major b16^\markup{\bold "F♯ blues"}  c'16 cis'16 e'16 fis'16 a'16 b'16 c''16 cis''16 e''16 fis''16 a''16 b''16 c'''16 cis'''16 e'''16 fis'''16 e'''16 cis'''16 c'''16 b''16 a''16 fis''16 e''16 cis''16 c''16 b'16 a'16 fis'16 e'16 cis'16 c'16 b1 \bar "||" \break
+\tuplet 3/2 { fis'''8 e'''8 c'''8 } \tuplet 3/2 { cis'''8 c'''8 a''8 } \tuplet 3/2 { b''8 a''8 e''8 } \tuplet 3/2 { fis''8 e''8 c''8 } \tuplet 3/2 { cis''8 c''8 a'8 } \tuplet 3/2 { b'8 a'8 e'8 } r4 r4 \bar "||" \break
+\key c \major b16^\markup{\bold "B blues"}  d'16 e'16 f'16 fis'16 a'16 b'16 d''16 e''16 f''16 fis''16 a''16 b''16 d'''16 e'''16 f'''16 fis'''16 f'''16 e'''16 d'''16 b''16 a''16 fis''16 f''16 e''16 d''16 b'16 a'16 fis'16 f'16 e'16 d'16 b1 \bar "||" \break
+\tuplet 3/2 { fis'''8 f'''8 d'''8 } \tuplet 3/2 { e'''8 d'''8 a''8 } \tuplet 3/2 { b''8 a''8 f''8 } \tuplet 3/2 { fis''8 f''8 d''8 } \tuplet 3/2 { e''8 d''8 a'8 } \tuplet 3/2 { b'8 a'8 f'8 } r4 r4 \bar "||" \break
+\key c \major bes16^\markup{\bold "E blues"}  b16 d'16 e'16 g'16 a'16 bes'16 b'16 d''16 e''16 g''16 a''16 bes''16 b''16 d'''16 e'''16 d'''16 b''16 bes''16 a''16 g''16 e''16 d''16 b'16 bes'16 a'16 g'16 e'16 d'16 b16 bes8 \bar "||" \break
+\tuplet 3/2 { e'''8 d'''8 bes''8 } \tuplet 3/2 { b''8 bes''8 g''8 } \tuplet 3/2 { a''8 g''8 d''8 } \tuplet 3/2 { e''8 d''8 bes'8 } \tuplet 3/2 { b'8 bes'8 g'8 } r4 r4 r4 \bar "||" \break
+\key c \major c'16^\markup{\bold "A blues"}  d'16 ees'16 e'16 g'16 a'16 c''16 d''16 ees''16 e''16 g''16 a''16 c'''16 d'''16 ees'''16 e'''16 ees'''16 d'''16 c'''16 a''16 g''16 e''16 ees''16 d''16 c''16 a'16 g'16 e'16 ees'16 d'16 c'8 \bar "||" \break
+\tuplet 3/2 { e'''8 ees'''8 c'''8 } \tuplet 3/2 { d'''8 c'''8 g''8 } \tuplet 3/2 { a''8 g''8 ees''8 } \tuplet 3/2 { e''8 ees''8 c''8 } \tuplet 3/2 { d''8 c''8 g'8 } \tuplet 3/2 { a'8 g'8 ees'8 } r4 r4 \bar "||" \break
+\key c \major c'16^\markup{\bold "D blues"}  d'16 f'16 g'16 aes'16 a'16 c''16 d''16 f''16 g''16 aes''16 a''16 c'''16 d'''16 f'''16 d'''16 c'''16 a''16 aes''16 g''16 f''16 d''16 c''16 a'16 aes'16 g'16 f'16 d'16 c'4 \bar "||" \break
+\tuplet 3/2 { f'''8 d'''8 a''8 } \tuplet 3/2 { c'''8 a''8 g''8 } \tuplet 3/2 { aes''8 g''8 d''8 } \tuplet 3/2 { f''8 d''8 a'8 } \tuplet 3/2 { c''8 a'8 g'8 } r4 r4 r4 \bar "||" \break
+\key c \major bes16^\markup{\bold "G blues"}  c'16 des'16 d'16 f'16 g'16 bes'16 c''16 des''16 d''16 f''16 g''16 bes''16 c'''16 des'''16 d'''16 f'''16 d'''16 des'''16 c'''16 bes''16 g''16 f''16 d''16 des''16 c''16 bes'16 g'16 f'16 d'16 des'16 c'16 bes1 \bar "||" \break
+\tuplet 3/2 { f'''8 d'''8 c'''8 } \tuplet 3/2 { des'''8 c'''8 g''8 } \tuplet 3/2 { bes''8 g''8 d''8 } \tuplet 3/2 { f''8 d''8 c''8 } \tuplet 3/2 { des''8 c''8 g'8 } r4 r4 r4 \bar "||" \break \bar "|." } \layout { indent = 0 } } }
