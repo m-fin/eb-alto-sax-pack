@@ -10,6 +10,9 @@ classical and 1920s studies.
 **Start here:** [`eb-alto-sax-practice-pack-COMBINED.pdf`](eb-alto-sax-practice-pack-COMBINED.pdf)
 (219 pages, with a cover page, table of contents and PDF bookmarks).
 
+**Browse all downloads:** [`index.html`](index.html) is a single page listing every volume and file, with page
+counts, sizes and licenses. It's ready for GitHub Pages: point Pages at the `main` branch root.
+
 ## Volume 2: 40 Advanced Modern Jazz Études (new)
 
 **Download:** [`vol2/eb-alto-sax-vol2-modern-jazz-etudes-COMBINED.pdf`](vol2/eb-alto-sax-vol2-modern-jazz-etudes-COMBINED.pdf)
@@ -99,6 +102,8 @@ You need [LilyPond 2.24](https://lilypond.org) and Python 3 with `pypdf` and `re
 * `src/pd-*.ly` wrap the public-domain Mutopia Project LilyPond sources in `src/mutopia/` and add the
   alto transposition. The Mutopia files in `src/mutopia/` are unmodified.
 * `tools/combine.py` builds the cover, table of contents and bookmarks, and writes the combined PDF.
+* `tools/make_index.py` writes `index.html` (the downloads page) from the PDFs. `--check` fails if it's out
+  of date, a PDF isn't listed, or a page count in this README doesn't match its PDF. CI runs the check.
 
 **Transposition check.** The written pitches of the Bach arrangements were compared note-for-note
 (via MIDI) against the original Mutopia files:
