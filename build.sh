@@ -10,3 +10,8 @@ for f in src/0*.ly src/pd-*.ly; do
 done
 rm -f pdf/*.midi
 python3 tools/combine.py
+# Vol. 2
+python3 tools/vol2.py
+lilypond -s -o vol2/pdf/vol2-modern-jazz-etudes vol2/src/vol2-modern-jazz-etudes.ly
+rm -f vol2/pdf/*.midi
+python3 tools/vol2_combine.py

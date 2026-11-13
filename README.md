@@ -10,7 +10,41 @@ classical and 1920s studies.
 **Start here:** [`eb-alto-sax-practice-pack-COMBINED.pdf`](eb-alto-sax-practice-pack-COMBINED.pdf)
 (219 pages, with a cover page, table of contents and PDF bookmarks).
 
-## What's inside
+## Volume 2: 40 Advanced Modern Jazz Études (new)
+
+**Download:** [`vol2/eb-alto-sax-vol2-modern-jazz-etudes-COMBINED.pdf`](vol2/eb-alto-sax-vol2-modern-jazz-etudes-COMBINED.pdf)
+(43 pages: cover and contents, 2 pages of concepts, then 40 one-page études). It's also attached to the
+**v2.0** release.
+
+These are 100% original, hard-hitting études for advanced readers, written in a general modern-jazz
+idiom:
+
+* long angular 16th-note and triplet lines
+* triad-pair and pentatonic superimposition
+* intervallic 4ths
+* side-slipping and outside-in-and-back
+* wide intervals
+* tritone and half-step superimposition
+* fast thirds-cycle changes
+* modern ii–V reharmonization (tritone subs, backdoor, descending ii–V chains)
+
+Feels and meters:
+
+* 14 swing études at 4 = 240–320
+* 8 straight-16th études at 4 = 126–152
+* 18 odd-meter études in 5/4, 7/8 (2+2+3), 9/8, 11/8 (3+3+3+2) and 7/4
+
+Small ossia staves give optional altissimo versions of some bars. Notes are in written E♭ alto pitch,
+and the chord symbols are in the alto key.
+
+The concepts pages explain each device in original prose, with a short example. The études are
+generated from those devices over original changes. None of them quotes, transcribes or paraphrases any
+recorded solo or composition, and all titles are original. License: **CC0 1.0**.
+
+Sources: `tools/vol2.py` (generator), `vol2/src/vol2-modern-jazz-etudes.ly` (LilyPond),
+`vol2/pdf/` (engraved PDF), `tools/vol2_combine.py` (cover, contents and bookmarks).
+
+## Volume 1: what's inside
 
 | File | Pages | What it is | License |
 |---|---:|---|---|
