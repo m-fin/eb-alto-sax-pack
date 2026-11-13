@@ -1,0 +1,19 @@
+name: Check downloads page
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pypdf
+      # Fails if index.html is stale, a PDF isn't listed, or a README page count doesn't match its PDF.
+      - run: python3 tools/make_index.py --check
