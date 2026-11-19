@@ -103,7 +103,7 @@ You need [LilyPond 2.24](https://lilypond.org) and Python 3 with `pypdf` and `re
   alto transposition. The Mutopia files in `src/mutopia/` are unmodified.
 * `tools/combine.py` builds the cover, table of contents and bookmarks, and writes the combined PDF.
 * `tools/make_index.py` writes `index.html` (the downloads page) from the PDFs. `--check` fails if it's out
-  of date, a PDF isn't listed, or a page count in this README doesn't match its PDF. CI runs the check.
+  of date, a PDF isn't listed, or a page count in this README doesn't match its PDF.
 
 **Transposition check.** The written pitches of the Bach arrangements were compared note-for-note
 (via MIDI) against the original Mutopia files:
@@ -114,6 +114,27 @@ You need [LilyPond 2.24](https://lilypond.org) and Python 3 with `pypdf` and `re
 
 The original material stays within written B♭3–F♯6 on the main staff. Only the optional ossias and
 overtone partials go higher.
+
+## Checks
+
+CI (`.github/workflows/check.yml`) runs four checks. None of them need LilyPond.
+
+```bash
+python3 tools/make_index.py --check   # index.html and the page counts in this README
+python3 -m unittest discover -s tests -v
+python3 tools/check_range.py          # written pitch of every generated .ly file
+python3 tools/check_drift.py          # generators reproduce the committed .ly files
+```
+
+`check_range.py` reads `src/0*.ly`, `src/pd-*.ly` and `vol2/src/*.ly`, including the Mutopia
+sources those files `\include`. It prints each file's lowest and highest written note. On the main
+staff the range is **B♭3–F♯6**. Notes above F♯6 are allowed only in ossia/altissimo staves and in
+the overtone-partial exercises (file 04). Chord symbols (`ChordNames` / `\chordmode`) are ignored.
+A note outside that rule fails the check, with the file, bar and source line.
+
+`check_drift.py` re-runs `tools/ref.py`, `jazz.py`, `sight.py` and `vol2.py` and requires the
+LilyPond they would write to match the committed sources byte for byte. The generators seed
+Python's `random` module, so the result does not depend on the machine. CI runs the same commands.
 
 ## Contributing
 
