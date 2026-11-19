@@ -142,6 +142,22 @@ def build(prog, sizes_per_bar, tables, devices, start=72):
 TITLES=['Cinder Grid','Black Ice Run','Neon Ladder','Torque','Glass Engine','Brushfire Math','Night Shift Dialect','Steel Origami','Crosswind','Pressure Front','Hollow Point Blue','Signal Chain','Riptide Theory','Graphite','Lantern Code','Fast Weather','Vertigo Street','Basalt','Afterburn','Jagged Halo','Overclock','Shatterline','Wolf Interval','Carbon Bloom','Smoke Geometry','Ironwood','Static Horizon','Heatwave Grammar','Northern Ledger','Switchyard','Phase Drift','Thunder Ledger','Cobalt Run','Night Market','Ember Logic','Granite Tide','Skyline Fracture','Quicksilver','Dust Devil','Last Exit East']
 assert len(set(TITLES))==40
 
+# Hashing a str is salted per process (PYTHONHASHSEED), so it cannot
+# reproduce a committed file. These integers are the seeds that match the
+# concept examples already engraved in vol2/src.
+CONCEPT_SEEDS={
+ 'Triad pairs':249,
+ 'Pentatonic superimposition':105,
+ 'Intervallic 4ths':624,
+ 'Side-slipping / outside-in-and-back':890,
+ 'Wide intervals & octave displacement':787,
+ 'Superimposition (tritone / half-step)':282,
+ 'Thirds cycles':384,
+ 'Modern ii–V reharmonization':228,
+ 'Odd meters':581,
+ 'How to practise these etudes':542,
+}
+
 def etude(i, meter, bars, tempo, feel, tables, seed):
     random.seed(seed)
     sizes,ts=METER[meter]; bl=sum(sizes)
@@ -173,7 +189,7 @@ def concepts():
     blocks=[]
     for title,prose,dev,q,root in txt:
         ch=C(root,q); prog=[(ch,32)]
-        random.seed(hash(title)%1000)
+        random.seed(CONCEPT_SEEDS[title])
         line,_,_=build(prog,[[4,4,4,4]]*2,{4:[([N16]*4,6),([N8,N8],2),([T('3/2',N8,N8,N8)],2)]},[dev] if dev in WEIGHT else ['bebop'])
         blocks.append(r'''\markup { \vspace #0.6 \bold \large "%s" } \markup \wordwrap-string #"%s"
 \score { << \new ChordNames \chordmode { %s } \new Staff = "main" { \time 4/4 %s \bar "||" } >> \layout { indent = 0 } }''' % (title, prose.replace('"',"'"), chordmode(prog), line))
@@ -181,19 +197,27 @@ def concepts():
 \markup \small \italic \wordwrap-string #"Every device here is general modern-jazz vocabulary. All lines in this volume are generated from these devices over original changes; none quotes, transcribes or paraphrases any recorded solo or composition." 
 %s }''' % '\n'.join(blocks)
 
-def main():
-    specs=[]; i=1
+def specs():
+    out=[]; i=1
     sw=[('Up swing','4 = 280'),('Burnout swing','4 = 320'),('Fast swing','4 = 260'),('Up swing','4 = 300'),('Medium-up swing','4 = 240')]
     for n in range(14):
-        f,t=sw[n%5]; specs.append((i,'4/4',20,t,f,{4:SW4},3000+n)); i+=1
+        f,t=sw[n%5]; out.append((i,'4/4',20,t,f,{4:SW4},3000+n)); i+=1
     for n in range(8):
-        specs.append((i,'4/4',16,'4 = %d' % random.Random(n).choice([126,132,138,144,152]),'Straight 16ths, angular',{4:ST4},3100+n)); i+=1
+        out.append((i,'4/4',16,'4 = %d' % random.Random(n).choice([126,132,138,144,152]),'Straight 16ths, angular',{4:ST4},3100+n)); i+=1
     odd=[('5/4','4 = 240','Even 8ths, 5/4',16),('7/8','8 = 330','2+2+3 groove',24),('9/8','8 = 340','3+3+3, driving',18),('11/8','8 = 320','3+3+3+2 groove',15),('7/4','4 = 220','Even 8ths, 7/4',13)]
     n=0
     while i<=40:
-        m,t,f,b=odd[n%5]; specs.append((i,m,b,t,f,{4:ODD4,6:ODD6},3200+n)); i+=1; n+=1
-    body=concepts()+'\n'+'\n'.join(etude(*s) for s in specs)
+        m,t,f,b=odd[n%5]; out.append((i,m,b,t,f,{4:ODD4,6:ODD6},3200+n)); i+=1; n+=1
+    return out
+
+def ly_source():
+    """LilyPond source for the volume. Deterministic; does not touch the tree."""
+    body=concepts()+'\n'+'\n'.join(etude(*s) for s in specs())
+    return '\\version "2.24.4"\n#(set-global-staff-size 18.5)\n'+PAPER+r'\book { '+body+' }'
+
+def main():
+    text=ly_source()
     out=os.path.join(HERE,'..','vol2','src','vol2-modern-jazz-etudes.ly')
-    open(out,'w').write('\\version "2.24.4"\n#(set-global-staff-size 18.5)\n'+PAPER+r'\book { '+body+' }')
-    print(out, len(specs))
+    open(out,'w').write(text)
+    print(out, len(specs()))
 if __name__=='__main__': main()

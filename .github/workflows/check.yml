@@ -1,4 +1,4 @@
-name: Check downloads page
+name: Check pack
 on:
   pull_request:
   push:
@@ -6,7 +6,7 @@ on:
 permissions:
   contents: read
 jobs:
-  index:
+  check:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -17,3 +17,8 @@ jobs:
       - run: pip install pypdf
       # Fails if index.html is stale, a PDF isn't listed, or a README page count doesn't match its PDF.
       - run: python3 tools/make_index.py --check
+      - run: python3 -m unittest discover -s tests -v
+      # Written alto range of every generated .ly file. No LilyPond install.
+      - run: python3 tools/check_range.py
+      # Generators must reproduce src/*.ly and vol2/src/*.ly byte-for-byte.
+      - run: python3 tools/check_drift.py
