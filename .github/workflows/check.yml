@@ -14,9 +14,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install pypdf
+      - run: pip install "pypdf==5.9.0"
       # Fails if index.html is stale, a PDF isn't listed, or a README page count doesn't match its PDF.
       - run: python3 tools/make_index.py --check
+      # Fails if a PDF's pages, size, or links disagree with README.md or index.html.
+      - run: python3 tools/check_manifest.py
       - run: python3 -m unittest discover -s tests -v
       # Written alto range of every generated .ly file. No LilyPond install.
       - run: python3 tools/check_range.py

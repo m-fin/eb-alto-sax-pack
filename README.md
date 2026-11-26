@@ -45,7 +45,8 @@ generated from those devices over original changes. None of them quotes, transcr
 recorded solo or composition, and all titles are original. License: **CC0 1.0**.
 
 Sources: `tools/vol2.py` (generator), `vol2/src/vol2-modern-jazz-etudes.ly` (LilyPond),
-`vol2/pdf/` (engraved PDF), `tools/vol2_combine.py` (cover, contents and bookmarks).
+[`vol2/pdf/vol2-modern-jazz-etudes.pdf`](vol2/pdf/vol2-modern-jazz-etudes.pdf) (42 pages),
+`tools/vol2_combine.py` (cover, contents and bookmarks).
 
 ## Volume 1: what's inside
 
@@ -117,14 +118,20 @@ overtone partials go higher.
 
 ## Checks
 
-CI (`.github/workflows/check.yml`) runs four checks. None of them need LilyPond.
+CI (`.github/workflows/check.yml`) runs five checks. None of them need LilyPond.
 
 ```bash
 python3 tools/make_index.py --check   # index.html and the page counts in this README
+python3 tools/check_manifest.py       # every PDF is listed, and pages, sizes and links match
 python3 -m unittest discover -s tests -v
 python3 tools/check_range.py          # written pitch of every generated .ly file
 python3 tools/check_drift.py          # generators reproduce the committed .ly files
 ```
+
+`check_manifest.py` reads every PDF in `pdf/`, `pd-scans/`, `vol2/` and the repository root.
+Each one has to be listed in this README and in `index.html`, stated page counts and download
+sizes have to match the files, and relative links in both documents have to point at files in
+the repo.
 
 `check_range.py` reads `src/0*.ly`, `src/pd-*.ly` and `vol2/src/*.ly`, including the Mutopia
 sources those files `\include`. It prints each file's lowest and highest written note. On the main
